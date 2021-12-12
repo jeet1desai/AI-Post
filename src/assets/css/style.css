@@ -1,0 +1,20 @@
+.home-page {
+  margin: 30px 0;
+}
+
+.home-page table {
+  border: 1px solid #d1d1d1;
+  min-width: 700px;
+}
+
+.home-page table thead {
+  background-color: black;
+}
+
+.home-page table thead th {
+  color: white;
+}
+
+.home-page table tbody tr:hover {
+  cursor: pointer;
+}
