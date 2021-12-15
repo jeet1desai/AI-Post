@@ -14,7 +14,7 @@ import {
 } from "@mui/material";
 import React, { useEffect, useState, useRef } from "react";
 import RowDialogBox from "../../components/Dialog";
-import { getPostsData } from "../../services/post.service";
+import service from "../../services/post.service";
 import { IPostFetchHitsData } from "../../utils/interfaces/post";
 
 const Home: React.FC = () => {
@@ -63,7 +63,7 @@ const Home: React.FC = () => {
     const page: number = currentPage.current ? currentPage.current : 0;
     setLoading(true);
     try {
-      const result = await getPostsData(page);
+      const result = await service.getPostsData(page);
       const post: IPostFetchHitsData[] = result.data.hits;
       setPostData((existingPosts) => [
         ...existingPosts.filter(
@@ -122,6 +122,7 @@ const Home: React.FC = () => {
           id="search-title-url-author"
           label="Search Post"
           variant="outlined"
+          inputProps={{ 'data-testid': 'search' }}
           defaultValue={""}
           value={search}
           onChange={(e) => setSearch(e.target.value)}
